@@ -1,28 +1,32 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Signup</title>
+    </head>
+    <body>
+        <h1>Signup</h1>
+        <hr />
+        <br>
+        <form action="/validate" method="POST">
+            <label>
+                Username: <input type="text" name="username" value='{{username}}'/>
+            </label>
+            <p class="err">{{usr_err_msg}}</p>
+            <label>
+                Password: <input type="password" name="password" />
+            </label>
+            <p class="err">{{pwd_err_msg}}</p>
+            <label>
+                Verify Password: <input type="password" name="verify-password" />
+            </label>
+            <p class="err">{{ver_err_msg}}</p>
+            <label>
+                Email (optional): <input type="text" name="email" value='{{email}}'/>
+            </label>
+            <p class="err">{{eml_err_msg}}</p>
+            <input type="submit" value="Signup" />
+        </form>
+    </body>
+</html>
 
-{% block content %}
 
-<h1>Signup</h1>
-<hr />
-<br>
-<form action="/validate_signup" method="POST">
-    <label>
-        Username: <input type="text" name="username" />
-    </label>
-    <p class="err"></p>
-    <label>
-        Password: <input type="password" name="password" />
-    </label>
-    <p class="err"></p>
-    <label>
-        Verify Password: <input type="password" name="verify-password" />
-    </label>
-    <p class="err"></p>
-    <label>
-        Email (optional): <input type="text" name="email" />
-    </label>
-    <p class="err"></p>
-    <input type="submit" value="Signup" />
-</form>
-
-{% endblock %}
