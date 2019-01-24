@@ -8,7 +8,7 @@ app.config['DEBUG'] = True
 #main request handler; loads page on initial browser request 
 @app.route("/")
 def index():
-    return render_template('signup_form.html')
+    return render_template('signup_form.html', title='SIGN UP')
 
 
 #functions to validate user input
@@ -106,9 +106,12 @@ def validate():
    
     #direct output
     if not usr_err_msg and not pwd_err_msg and not ver_err_msg and not eml_err_msg:
-        return render_template('welcome.html', name=username)
+        style = " h1 {font-family: sans-serif; font-style: italic; color: magenta;}"
+        return render_template('welcome.html', title='Welcome', form_style = style, username=username)
     else:
+        style = " .err { color: red;} "
         return render_template('signup_form.html', 
+        form_style=style,
         usr_err_msg=usr_err_msg,
         pwd_err_msg=pwd_err_msg,
         ver_err_msg=ver_err_msg,
