@@ -34,7 +34,7 @@ def test_char(field):
 
 
 #request handler to accept user input, test for validity and send response to browser
-@app.route("/validate", methods=['POST'])
+@app.route("/", methods=['POST'])
 def validate():
     username = request.form['username']
     password = request.form['password']
@@ -69,21 +69,20 @@ def validate():
                 password = password
             else:
                 pwd_err_msg = "Password cannot contain spaces."
-                password = ''
         else:
             pwd_err_msg = "Password must be between 3 and 30 characters."
-            password = ''
     else:
         pwd_err_msg = "Password field is required."
 
     # #validate verify_password
+    print(test_match(password, verify_password))
+    print(password)
+    print(verify_password)
     if test_match(password, verify_password):
         ver_err_msg = ''
         verify_password = verify_password
     else:
         ver_err_msg = "Invalid. Passwords do not match"
-        password = ''
-        verify_password = ''
 
     # #validate email
     if not test_blank(email):
